@@ -8,4 +8,5 @@ export default function Home() {
       <Link href = "\week-3"> Go to Week 3</Link>
     </main>
   );
+      
 }
