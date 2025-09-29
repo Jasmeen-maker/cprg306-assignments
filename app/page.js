@@ -8,7 +8,8 @@ export default function page() {
       <Link href = "\week-2"> Go to Week 2</Link>
       </li>
         <li>
-                <Link href = "\week-3 "> Go to Week 3</Link>
+
+                <Link href = "\week-3"> Go to Week 3</Link>
                 </li>
     </main>
   );
