@@ -20,7 +20,7 @@ export default function NewItem() {
     <div className="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center space-y-4 w-72">
       <h2 className="text-xl font-semibold">Select Quantity</h2>
       <div className="flex items-center space-x-4">
-        {/* Decrement Button */}
+         {/* button 1 */}
         <button
           onClick={decrement}
           disabled={quantity === 1}
@@ -33,10 +33,10 @@ export default function NewItem() {
           -
         </button>
 
-        {/* Current Quantity */}
+        
         <span className="text-2xl font-bold">{quantity}</span>
 
-        {/* Increment Button */}
+        {/* button 2 */}
         <button
           onClick={increment}
           disabled={quantity === 20}
