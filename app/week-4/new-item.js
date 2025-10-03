@@ -50,7 +50,7 @@ export default function NewItem() {
         </button>
       </div>
       <p className="text-gray-600 text-sm">
-        Quantity must be between <b>1</b> and <b>20</b>
+        Allowed Range : 1-20
       </p>
     </div>
   );
