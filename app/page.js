@@ -12,7 +12,7 @@ export default function page() {
                 <Link href = "\week-3"> Go to Week 3</Link>
                 </li>
                 <li>
-                  <Link href = "\week-4"></Link>
+                  <Link href = "\week-4">Go to Week 4</Link>
                 </li>
     </main>
   );
