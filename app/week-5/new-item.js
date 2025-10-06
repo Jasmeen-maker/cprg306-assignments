@@ -1,0 +1,100 @@
+"use client";
+
+import { useState } from "react";
+
+export default function NewItem() {
+  // 🧠 Step 1: State variables
+  const [name, setName] = useState("");         // Name field
+  const [quantity, setQuantity] = useState(1);  // Already done in Week 4
+  const [category, setCategory] = useState("produce"); // Category field
+
+  // 🧩 Step 2: Form submission handler
+  const handleSubmit = (event) => {
+    event.preventDefault(); // stop page reload
+
+    const item = {
+      name: name,
+      quantity: quantity,
+      category: category,
+    };
+
+    console.log("New Item:", item);
+
+    // 🪄 Show alert
+    alert(`Added Item:
+    Name: ${name}
+    Quantity: ${quantity}
+    Category: ${category}`);
+
+    // 🔄 Reset all fields
+    setName("");
+    setQuantity(1);
+    setCategory("produce");
+  };
+
+  // 🎨 Step 3: Render the form
+  return (
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">
+        Add New Item
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Name field */}
+        <div>
+          <label className="block font-medium text-gray-600 mb-1">Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            placeholder="Enter item name"
+            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+          />
+        </div>
+
+        {/* Quantity field (already done in Week 4) */}
+        <div>
+          <label className="block font-medium text-gray-600 mb-1">Quantity</label>
+          <input
+            type="number"
+            min="1"
+            max="99"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+          />
+        </div>
+
+        {/* Category field */}
+        <div>
+          <label className="block font-medium text-gray-600 mb-1">Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+          >
+            <option value="produce">Produce</option>
+            <option value="dairy">Dairy</option>
+            <option value="bakery">Bakery</option>
+            <option value="meat">Meat</option>
+            <option value="frozen foods">Frozen Foods</option>
+            <option value="canned goods">Canned Goods</option>
+            <option value="dry goods">Dry Goods</option>
+            <option value="beverages">Beverages</option>
+            <option value="snacks">Snacks</option>
+            <option value="household">Household</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        {/* Submit button */}
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md"
+        >
+          Add Item
+        </button>
+      </form>
+    </div>
+  );
+}
