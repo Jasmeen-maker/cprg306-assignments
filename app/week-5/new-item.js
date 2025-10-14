@@ -35,26 +35,24 @@ export default function NewItem() {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">
-        Add New Item
-      </h2>
+    
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name field */}
         <div>
-          <label className="block font-medium text-gray-600 mb-1">Name</label>
+          <label className="block font-medium text-gray-600 mb-1"> Item Name</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            placeholder="Enter item name"
+            placeholder="e.g., milk,4l "
             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           />
         </div>
 
         {/* Quantity field (already done in Week 4) */}
         <div>
-          <label className="block font-medium text-gray-600 mb-1">Quantity</label>
+          <label className="block font-medium text-gray-600 mb-1">Quantity(1-20)</label>
           <input
             type="number"
             min="1"
