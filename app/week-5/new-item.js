@@ -3,14 +3,14 @@
 import { useState } from "react";
 
 export default function NewItem() {
-  // 🧠 Step 1: State variables
-  const [name, setName] = useState("");         // Name field
-  const [quantity, setQuantity] = useState(1);  // Already done in Week 4
-  const [category, setCategory] = useState("produce"); // Category field
 
-  // 🧩 Step 2: Form submission handler
+  const [name, setName] = useState("");         
+  const [quantity, setQuantity] = useState(1);  
+  const [category, setCategory] = useState("produce"); 
+
+  
   const handleSubmit = (event) => {
-    event.preventDefault(); // stop page reload
+    event.preventDefault(); 
 
     const item = {
       name: name,
@@ -20,19 +20,19 @@ export default function NewItem() {
 
     console.log("New Item:", item);
 
-    // 🪄 Show alert
+    
     alert(`Added Item:
     Name: ${name}
     Quantity: ${quantity}
     Category: ${category}`);
 
-    // 🔄 Reset all fields
+    
     setName("");
     setQuantity(1);
     setCategory("produce");
   };
 
-  // 🎨 Step 3: Render the form
+
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">
