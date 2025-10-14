@@ -85,13 +85,14 @@ export default function NewItem() {
           </select>
         </div>
 
-        {/* Submit button */}
-        <button
-          type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 focus:ring-green-400"
-        >
-          Add Item
-        </button>
+      < div className="flex justify-center mt-4">
+          <button
+            type="submit"
+            className="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 transition-all shadow-md"
+          >
+            Add Item
+          </button>
+        </div>
       </form>
     </div>
   );
