@@ -88,7 +88,7 @@ export default function NewItem() {
         {/* Submit button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md"
+          className="w-full bg-green-500 hover:bg-green-600 focus:ring-green-400"
         >
           Add Item
         </button>
