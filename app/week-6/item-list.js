@@ -6,7 +6,6 @@ import itemsData from "./items.json";
 export default function ItemList() {
   const [sortBy, setSortBy] = useState("name");
 
-  // Create a sorted copy of the items
   const sortedItems = [...itemsData].sort((a, b) => {
     if (sortBy === "name") {
       return a.name.localeCompare(b.name);
@@ -17,27 +16,35 @@ export default function ItemList() {
   });
 
   return (
-    <div className="p-4">
-      <div className="flex gap-2 mb-4">
+    <div>
+      {/* Sort Buttons */}
+      <div className="flex items-center gap-2 mb-5">
+        <span className="font-semibold">Sort by:</span>
+
         <button
           onClick={() => setSortBy("name")}
-          className={`px-4 py-2 rounded ${
-            sortBy === "name" ? "bg-blue-500 text-white" : "bg-gray-200"
+          className={`px-3 py-1 rounded-md border ${
+            sortBy === "name"
+              ? "bg-blue-600 text-white border-blue-600"
+              : "bg-gray-100 text-black border-gray-300"
           }`}
         >
-          Sort by Name
+          Name
         </button>
 
         <button
           onClick={() => setSortBy("category")}
-          className={`px-4 py-2 rounded ${
-            sortBy === "category" ? "bg-blue-500 text-white" : "bg-gray-200"
+          className={`px-3 py-1 rounded-md border ${
+            sortBy === "category"
+              ? "bg-blue-600 text-white border-blue-600"
+              : "bg-gray-100 text-black border-gray-300"
           }`}
         >
-          Sort by Category
+          Category
         </button>
       </div>
 
+      {/* Items List */}
       <ul>
         {sortedItems.map((item) => (
           <Item
