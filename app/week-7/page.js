@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import NewItem from "./new-item";
 import ItemList from "./item-list";
@@ -8,19 +9,21 @@ export default function Page() {
   // Initialize state with items.json
   const [items, setItems] = useState(itemsData);
 
-  // Function to handle adding a new item
+  // Handler to add a new item
   function handleAddItem(newItem) {
     setItems((prevItems) => [...prevItems, newItem]);
   }
 
   return (
     <main className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4 text-center">Shopping List 🛒</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">
+        🛒 Shopping List
+      </h1>
 
-      {/* Form to add new item */}
+      {/* Form for adding new items */}
       <NewItem onAddItem={handleAddItem} />
 
-      {/* Display sortable item list */}
+      {/* Display the list of items */}
       <ItemList items={items} />
     </main>
   );

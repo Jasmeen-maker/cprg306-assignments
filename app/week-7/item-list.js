@@ -1,11 +1,13 @@
+
 "use client";
+
 import React, { useState } from "react";
 import Item from "./item";
 
 export default function ItemList({ items }) {
   const [sortBy, setSortBy] = useState("name");
 
-  // Create a sorted copy of items
+  // Sort copy of items (never mutate props)
   const sortedItems = [...items].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     if (sortBy === "category") return a.category.localeCompare(b.category);
@@ -13,11 +15,11 @@ export default function ItemList({ items }) {
   });
 
   return (
-    <div className="p-4 bg-white rounded-lg mt-6">
-      <h2 className="text-xl font-semibold mb-2">Shopping List</h2>
+    <section className="bg-white p-4 rounded-lg shadow">
+      <h2 className="text-xl font-semibold mb-4">Your Items</h2>
 
       <div className="mb-4">
-        <label className="mr-2 font-medium">Sort by:</label>
+        <label className="font-medium mr-2">Sort by:</label>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
@@ -33,6 +35,6 @@ export default function ItemList({ items }) {
           <Item key={item.id} {...item} />
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
