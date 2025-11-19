@@ -3,7 +3,7 @@
 import { useUserAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-
+import itemsdata from "./item.json";
 export default function ShoppingListPage() {
   const { user } = useUserAuth();
   const router = useRouter();
