@@ -1,16 +1,12 @@
 export default function Item({ name, quantity, category, onSelect }) {
   return (
     <li
-      onClick={() => onSelect(name)}
-      style={{
-        cursor: "pointer",
-        border: "1px solid #ddd",
-        padding: "8px",
-        margin: "4px 0",
-        borderRadius: "8px",
-      }}
+      className="border p-3 mb-2 rounded cursor-pointer hover:bg-gray-100"
+      onClick={onSelect}
     >
-      <strong>{name}</strong> — {quantity} ({category})
+      <h3 className="font-bold">{name}</h3>
+      <p>Quantity: {quantity}</p>
+      <p>Category: {category}</p>
     </li>
   );
 }

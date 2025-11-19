@@ -1,26 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function NewItem({ onAddItem }) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
 
-    const newItem = {
-      id: Math.random().toString(36).substring(2, 9), // random ID
+    const item = {
+      id: Math.random().toString(36).substring(2, 9),
       name,
       quantity,
       category,
     };
 
-    // Call the parent handler
-    onAddItem(newItem);
+    onAddItem(item);
 
-    // Reset form
     setName("");
     setQuantity(1);
     setCategory("produce");
@@ -29,49 +27,56 @@ export default function NewItem({ onAddItem }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-100 p-4 rounded-lg mb-6 flex flex-col gap-2"
+      className="border p-4 mb-4 rounded bg-gray-50"
     >
-      <h2 className="text-xl font-semibold">Add a New Item</h2>
+      <h2 className="text-xl font-bold mb-2">Add New Item</h2>
 
-      <input
-        className="border p-2 rounded"
-        type="text"
-        placeholder="Item name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
+      {/* Item Name */}
+      <label className="block mb-2">
+        Item Name:
+        <input
+          className="border p-1 w-full"
+          required
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
 
-      <input
-        className="border p-2 rounded"
-        type="number"
-        min="1"
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-        required
-      />
+      {/* Quantity 1–20 */}
+      <label className="block mb-2">
+        Quantity: {quantity}
+        <input
+          className="w-full"
+          type="range"
+          min="1"
+          max="20"
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
+        />
+      </label>
 
-      <select
-        className="border p-2 rounded"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        <option value="produce">Produce</option>
-        <option value="dairy">Dairy</option>
-        <option value="bakery">Bakery</option>
-        <option value="meat">Meat</option>
-        <option value="frozen">Frozen</option>
-        <option value="other">Other</option>
-      </select>
+      {/* Category */}
+      <label className="block mb-2">
+        Category:
+        <select
+          className="border p-1 w-full"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="produce">Produce</option>
+          <option value="dairy">Dairy</option>
+          <option value="bakery">Bakery</option>
+          <option value="meat">Meat</option>
+          <option value="household">Household</option>
+          <option value="canned goods">Canned Goods</option>
+          <option value="dry goods">Dry Goods</option>
+        </select>
+      </label>
 
-      <button
-        type="submit"
-        className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
-      >
+      <button className="bg-blue-600 text-white px-4 py-2 rounded">
         Add Item
       </button>
     </form>
   );
 }
-
-

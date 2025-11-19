@@ -2,54 +2,44 @@
 
 import { useEffect, useState } from "react";
 
+async function fetchMealIdeas(ingredient) {
+  if (!ingredient) return [];
+
+  const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.meals || [];
+}
+
 export default function MealIdeas({ ingredient }) {
   const [meals, setMeals] = useState([]);
 
-  // API function to fetch meals based on ingredient
-  async function fetchMealIdeas(ingredient) {
-    if (!ingredient) return [];
-
-    try {
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
-      );
-      const data = await response.json();
-      return data.meals || [];
-    } catch (error) {
-      console.error("Error fetching meal ideas:", error);
-      return [];
-    }
-  }
-
   async function loadMealIdeas() {
-    const mealResults = await fetchMealIdeas(ingredient);
-    setMeals(mealResults);
+    const ideas = await fetchMealIdeas(ingredient);
+    setMeals(ideas);
   }
 
-  // reload when ingredient changes
   useEffect(() => {
     loadMealIdeas();
   }, [ingredient]);
 
   return (
-    <div style={{ marginLeft: "2rem" }}>
-      <h2>Meal Ideas {ingredient ? `for "${ingredient}"` : ""}</h2>
-      {meals.length === 0 ? (
-        <p>No meal ideas yet — select an ingredient.</p>
-      ) : (
-        <ul>
-          {meals.map((meal) => (
-            <li key={meal.idMeal}>
-              <img
-                src={meal.strMealThumb}
-                alt={meal.strMeal}
-                style={{ width: "100px", borderRadius: "8px" }}
-              />
-              <p>{meal.strMeal}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div>
+      <h2 className="text-xl font-bold mb-2">
+        Meal ideas for: {ingredient || "—"}
+      </h2>
+
+      <ul>
+        {meals.map((meal) => (
+          <li key={meal.idMeal} className="mb-2">
+            {meal.strMeal}
+          </li>
+        ))}
+
+        {meals.length === 0 && (
+          <p className="text-gray-500">No ideas yet. Select an ingredient.</p>
+        )}
+      </ul>
     </div>
   );
 }
