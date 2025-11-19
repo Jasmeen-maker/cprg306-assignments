@@ -1,32 +1,27 @@
-
-
-
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import NewItem from "./new-item";
 import ItemList from "./item-list";
 import itemsData from "./item.json";
 
 export default function Page() {
-  // Initialize state with items.json
+  // initialize items state using items.json
   const [items, setItems] = useState(itemsData);
 
-  // Handler to add a new item
+  // add new item handler
   function handleAddItem(newItem) {
-    setItems((prevItems) => [...prevItems, newItem]);
+    setItems([...items, newItem]); // create a new array
   }
 
   return (
-    <main className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-6">
-        🛒 Shopping List
-      </h1>
+    <main className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Week 7 — Shopping List</h1>
 
-      {/* Form for adding new items */}
+      {/* NEW ITEM FORM */}
       <NewItem onAddItem={handleAddItem} />
 
-      {/* Display the list of items */}
+      {/* ITEM LIST */}
       <ItemList items={items} />
     </main>
   );
